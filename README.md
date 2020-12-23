@@ -19,3 +19,7 @@ Initial release of last-type app.
 Improved message in the status bar.
 
 Performant code.
+
+### 1.0.2
+
+Clickable status bar for more information.

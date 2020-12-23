@@ -1,60 +1,61 @@
 const vscode = require("vscode");
-const moment = require("moment");
+let timerId;
 
 /**
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-  let disposable = vscode.commands.registerCommand(
-    "last-type.helloWorld",
-    function () {
-      const statusBar = vscode.window.createStatusBarItem(1, 10);
-      let dateTime;
-      const DATE_TIME_FORMAT = "MMMM Do YYYY, h:mm:ss a";
+  let dateTime;
+  let idle = 0;
 
-      let idle = 0;
-      let timerId;
+  const onInit = vscode.commands.registerCommand("last-type.init", function () {
+    const statusBarItem = vscode.window.createStatusBarItem(1, 10);
+    statusBarItem.command = "last-type.click";
 
-      const start = () => {
-        timerId = setInterval(() => {
-          if (idle >= 4) {
-            statusBar.color = "white";
-          }
+    const start = () => {
+      timerId = setInterval(() => {
+        idle++;
 
-          idle++;
+        statusBarItem.text = `Last activity ${idle} ${
+          idle === 1 ? "minute" : "minutes"
+        } ago`;
+      }, 600);
+    };
 
-          statusBar.text = `Last activity ${idle} ${
-            idle === 1 ? "minute" : "minutes"
-          } ago, ${dateTime}`;
-        }, 60000);
-      };
+    vscode.workspace.onDidChangeTextDocument(() => {
+      clearInterval(timerId);
 
-      vscode.workspace.onDidChangeTextDocument(() => {
-        clearInterval(timerId);
-        statusBar.color = undefined;
+      dateTime = new Date().toString();
+      idle = 0;
+      statusBarItem.text = `just now`;
 
-        idle = 0;
-
-        statusBar.text = `just now`;
-
-        dateTime = moment(new Date(), DATE_TIME_FORMAT);
-        start();
-      });
-
-      statusBar.text = `just now`;
-
-      dateTime = moment(new Date(), DATE_TIME_FORMAT);
       start();
-      statusBar.show();
-    }
-  );
+    });
 
-  context.subscriptions.push(disposable);
-  vscode.commands.executeCommand("last-type.helloWorld");
+    statusBarItem.text = `just now`;
+    dateTime = new Date().toString();
+
+    start();
+
+    statusBarItem.show();
+  });
+
+  vscode.commands.registerCommand("last-type.click", function () {
+    vscode.window.showInformationMessage(
+      `Last activity ${idle} ${
+        idle === 1 ? "minute" : "minutes"
+      } ago, at ${dateTime}`
+    );
+  });
+
+  context.subscriptions.push(onInit);
+  vscode.commands.executeCommand("last-type.init");
 }
 
 // this method is called when your extension is deactivated
-function deactivate() {}
+function deactivate() {
+  clearInterval(timerId);
+}
 
 module.exports = {
   activate,
