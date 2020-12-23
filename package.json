@@ -1,9 +1,8 @@
 {
-
-  "name": "last-type",
+	"name": "last-type",
 	"displayName": "Last Type",
-	"description": "Find out your last type.",
-	"version": "1.0.0",
+	"description": "It show when was the last time you typed something.",
+	"version": "1.0.1",
 	"publisher": "uditkaushik",
 	"author": {
 		"name": "Udit Kaushik"
@@ -14,8 +13,15 @@
 	"categories": [
 		"Other"
 	],
+	"keywords": [
+		"activity monitor",
+		"activity",
+		"last type",
+		"last typed at",
+		"monitor"
+	],
 	"activationEvents": [
-    "onStartupFinished"
+		"onStartupFinished"
 	],
 	"homepage": "https://github.com/udit1994/last-type",
 	"repository": {
@@ -28,27 +34,30 @@
 	"icon": "images/logo.png",
 	"main": "./extension.js",
 	"contributes": {
-		"commands": [{
+		"commands": [
+			{
 				"command": "last-type.helloWorld",
 				"title": "Hello World"
-		}]
+			}
+		]
 	},
-
 	"scripts": {
 		"lint": "eslint .",
 		"pretest": "yarn run lint",
 		"test": "node ./test/runTest.js"
 	},
 	"devDependencies": {
-			"@types/vscode": "^1.52.0",
-			"@types/glob": "^7.1.3",
-			"@types/mocha": "^8.0.4",
-			"@types/node": "^12.11.7",
-			"eslint": "^7.15.0",
-			"glob": "^7.1.6",
-			"mocha": "^8.1.3",
-			"typescript": "^4.1.2",
-			"vscode-test": "^1.4.1"
-    }
-
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"@types/vscode": "^1.52.0",
+		"eslint": "^7.15.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.1.3",
+		"typescript": "^4.1.2",
+		"vscode-test": "^1.4.1"
+	},
+	"dependencies": {
+		"moment": "^2.29.1"
+	}
 }

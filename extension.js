@@ -1,9 +1,5 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 const vscode = require("vscode");
-
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+const moment = require("moment");
 
 /**
  * @param {vscode.ExtensionContext} context
@@ -13,20 +9,42 @@ function activate(context) {
     "last-type.helloWorld",
     function () {
       const statusBar = vscode.window.createStatusBarItem(1, 10);
-      let time = 0;
+      let dateTime;
+      const DATE_TIME_FORMAT = "MMMM Do YYYY, h:mm:ss a";
+
+      let idle = 0;
+      let timerId;
+
+      const start = () => {
+        timerId = setInterval(() => {
+          if (idle >= 4) {
+            statusBar.color = "white";
+          }
+
+          idle++;
+
+          statusBar.text = `Last activity ${idle} ${
+            idle === 1 ? "minute" : "minutes"
+          } ago, ${dateTime}`;
+        }, 60000);
+      };
 
       vscode.workspace.onDidChangeTextDocument(() => {
-        time = 0;
-        statusBar.text = `${time} minutes`;
+        clearInterval(timerId);
+        statusBar.color = undefined;
+
+        idle = 0;
+
+        statusBar.text = `just now`;
+
+        dateTime = moment(new Date(), DATE_TIME_FORMAT);
+        start();
       });
 
-      setInterval(() => {
-        time++;
-        statusBar.text = `${time} minutes`;
-      }, 60000);
+      statusBar.text = `just now`;
 
-      statusBar.text = `${time} minutes`;
-
+      dateTime = moment(new Date(), DATE_TIME_FORMAT);
+      start();
       statusBar.show();
     }
   );
