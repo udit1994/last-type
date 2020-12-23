@@ -4,7 +4,7 @@
 	"displayName": "Last Type",
 	"description": "Find out your last type.",
 	"version": "1.0.0",
-	"publisher": "uditkaushik94",
+	"publisher": "uditkaushik",
 	"author": {
 		"name": "Udit Kaushik"
 	},
@@ -25,11 +25,11 @@
 	"bugs": {
 		"url": "https://github.com/udit1994/last-type/issues"
 	},
-	"icon": "./images/logo.png",
+	"icon": "images/logo.png",
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [{
-				"command": "intermittent-fasting.helloWorld",
+				"command": "last-type.helloWorld",
 				"title": "Hello World"
 		}]
 	},

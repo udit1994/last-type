@@ -9,43 +9,31 @@ const vscode = require("vscode");
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-  // Use the console to output diagnostic information (console.log) and errors (console.error)
-  // This line of code will only be executed once when your extension is activated
-  console.log(
-    'Congratulations, your extension "intermittent-fasting" is now active!'
-  );
-
-  // The command has been defined in the package.json file
-  // Now provide the implementation of the command with  registerCommand
-  // The commandId parameter must match the command field in package.json
   let disposable = vscode.commands.registerCommand(
-    "intermittent-fasting.helloWorld",
+    "last-type.helloWorld",
     function () {
-      // The code you place here will be executed every time your command is executed
-
-      // Display a message box to the user
-      let time = 0;
       const statusBar = vscode.window.createStatusBarItem(1, 10);
-
-      setInterval(() => {
-        time++;
-        statusBar.text = `${time} minutes`;
-      }, 60000);
+      let time = 0;
 
       vscode.workspace.onDidChangeTextDocument(() => {
         time = 0;
         statusBar.text = `${time} minutes`;
       });
 
+      setInterval(() => {
+        time++;
+        statusBar.text = `${time} minutes`;
+      }, 60000);
+
       statusBar.text = `${time} minutes`;
-      // statusBar.text = "udit kaushik";
+
       statusBar.show();
     }
   );
 
   context.subscriptions.push(disposable);
+  vscode.commands.executeCommand("last-type.helloWorld");
 }
-exports.activate = activate;
 
 // this method is called when your extension is deactivated
 function deactivate() {}
