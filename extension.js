@@ -19,7 +19,7 @@ function activate(context) {
         statusBarItem.text = `Last activity ${idle} ${
           idle === 1 ? "minute" : "minutes"
         } ago`;
-      }, 600);
+      }, 60000);
     };
 
     vscode.workspace.onDidChangeTextDocument(() => {
