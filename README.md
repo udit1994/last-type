@@ -1,17 +1,24 @@
 # Last Type
 
-Check when did you last typed.
+Check out when was last time you typed something in the editor.
 
 ## Features
 
 This extension shows how long it's been when you last typed in the editor.
+Click on the extension to see the exact time when you lastt typed.
 
-![feature X](images/app.png)
+![Screenshot of extension in status bar](images/app.png)
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+- Version 1.0.1
 
-### 1.0.0
+  - User friendly message.
 
-Initial release of last-type app.
+- Version 1.0.0
+
+  - Check when was the last time you typed something in the editor.
+
+### License
+
+This extension is licensed under [MIT LICENSE](https://github.com/ritwickdey/vscode-live-server/blob/master/LICENSE)

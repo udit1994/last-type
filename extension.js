@@ -42,7 +42,7 @@ function activate(context) {
 
   vscode.commands.registerCommand("last-type.click", function () {
     vscode.window.showInformationMessage(
-      `Last typed ${idle} ${
+      `Last activity ${idle} ${
         idle === 1 ? "minute" : "minutes"
       } ago, at ${dateTime}`
     );

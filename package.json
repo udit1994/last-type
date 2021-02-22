@@ -1,69 +1,69 @@
 {
-	"name": "last-type",
-	"displayName": "Last Type",
-	"description": "It show when was the last time you typed something.",
-	"version": "1.0.0",
-	"publisher": "uditkaushik",
-	"author": {
-		"name": "Udit Kaushik"
-	},
-	"engines": {
-		"vscode": "^1.52.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"keywords": [
-		"activity monitor",
-		"activity",
-		"last type",
-		"last typed at",
-		"monitor"
-	],
-	"activationEvents": [
-		"onStartupFinished"
-	],
-	"homepage": "https://github.com/udit1994/last-type",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/udit1994/last-type"
-	},
-	"bugs": {
-		"url": "https://github.com/udit1994/last-type/issues"
-	},
-	"icon": "images/logo.png",
-	"main": "./dist/extension",
-	"contributes": {
-		"capabilities": {
-			"hoverProvider": "true"
-		},
-		"commands": [
-			{
-				"command": "last-type.init",
-				"title": "Hello World"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "webpack --mode production",
-		"webpack": "webpack --mode development",
-		"webpack-dev": "webpack --mode development --watch",
-		"lint": "eslint .",
-		"pretest": "yarn run lint",
-		"test": "node ./test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.0.4",
-		"@types/node": "^12.11.7",
-		"@types/vscode": "^1.52.0",
-		"eslint": "^7.15.0",
-		"glob": "^7.1.6",
-		"mocha": "^8.1.3",
-		"typescript": "^4.1.2",
-		"vscode-test": "^1.4.1",
-		"webpack": "^5.11.0",
-		"webpack-cli": "^4.2.0"
-	},
-	"dependencies": {}
+  "name": "last-type",
+  "displayName": "Last Type",
+  "description": "It displays when was the last time you typed something inside the editor.",
+  "version": "1.0.1",
+  "publisher": "uditkaushik",
+  "author": {
+    "name": "Udit Kaushik"
+  },
+  "engines": {
+    "vscode": "^1.52.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "activity monitor",
+    "activity",
+    "last type",
+    "last typed at",
+    "monitor"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "homepage": "https://github.com/udit1994/last-type",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/udit1994/last-type"
+  },
+  "bugs": {
+    "url": "https://github.com/udit1994/last-type/issues"
+  },
+  "icon": "images/logo.png",
+  "main": "./dist/extension",
+  "contributes": {
+    "capabilities": {
+      "hoverProvider": "true"
+    },
+    "commands": [
+      {
+        "command": "last-type.init",
+        "title": "last-type"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "webpack --mode production",
+    "webpack": "webpack --mode development",
+    "webpack-dev": "webpack --mode development --watch",
+    "lint": "eslint .",
+    "pretest": "yarn run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.52.0",
+    "eslint": "^7.15.0",
+    "glob": "^7.1.6",
+    "mocha": "^8.1.3",
+    "typescript": "^4.1.2",
+    "vscode-test": "^1.4.1",
+    "webpack": "^5.11.0",
+    "webpack-cli": "^4.2.0"
+  },
+  "dependencies": {}
 }
